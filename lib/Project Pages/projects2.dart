@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/Pages/login.dart';
+import 'package:portfolio/Project%20Pages/blinkit.dart';
 import 'package:portfolio/constants/caraousel.dart';
 import 'package:portfolio/constants/fullscreen.dart';
 
@@ -35,7 +36,7 @@ class _Project2State extends State<Project2> {
             ),
           ),
           SizedBox(
-            height: 350,
+            height: 200,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 20),
@@ -66,32 +67,41 @@ class _Project2State extends State<Project2> {
           ),
           Column(
             children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25),
-                    child: Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: Colors.black,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Blinkit()));
+                },
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 25),
+                      child: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.black,
+                        ),
+                        child: Center(
+                            child: Text(
+                          "B",
+                          style: TextStyle(color: Colors.white),
+                        )),
                       ),
-                      child: Center(
-                          child: Text(
-                        "B",
-                        style: TextStyle(color: Colors.white),
-                      )),
                     ),
-                  ),
-                  SizedBox(
-                    width: 50,
-                  ),
-                  Text(
-                    "Blinkit",
-                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                  )
-                ],
+                    SizedBox(
+                      width: 50,
+                    ),
+                    Container(
+                      child: Text(
+                        "Blinkit",
+                        style: TextStyle(
+                            fontSize: 35, fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                ),
               )
             ],
           )

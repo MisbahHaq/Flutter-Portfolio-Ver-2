@@ -8,7 +8,8 @@ import 'package:portfolio/Pages/about.dart';
 import 'package:portfolio/Pages/experience.dart';
 import 'package:portfolio/Pages/login.dart';
 import 'package:portfolio/Pages/projects.dart';
-import 'package:portfolio/Pages/projects2.dart';
+import 'package:portfolio/Project%20Pages/blinkit.dart';
+import 'package:portfolio/Project%20Pages/projects2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Hidden(),
+      home: Blinkit(),
     );
   }
 }
