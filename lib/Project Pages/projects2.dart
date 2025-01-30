@@ -1,29 +1,38 @@
-import 'package:animations/animations.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/Pages/login.dart';
-import 'package:portfolio/Project%20Pages/blinkit.dart';
-import 'package:portfolio/constants/caraousel.dart';
-import 'package:portfolio/constants/fullscreen.dart';
+import 'package:portfolio/Project%20Pages/project_detail_page.dart.dart';
+import 'package:portfolio/main.dart';
 
-class Project2 extends StatefulWidget {
+class Project2 extends StatelessWidget {
   const Project2({super.key});
 
   @override
-  State<Project2> createState() => _Project2State();
-}
-
-class _Project2State extends State<Project2> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        forceMaterialTransparency: true,
-      ),
       backgroundColor: Colors.yellow,
       body: Column(
         children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 20, top: 30),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Hidden()));
+                  },
+                  child: Container(
+                    child: Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 20),
             child: Text(
@@ -35,9 +44,7 @@ class _Project2State extends State<Project2> {
               ),
             ),
           ),
-          SizedBox(
-            height: 200,
-          ),
+          SizedBox(height: 200),
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 20),
             child: Container(
@@ -62,15 +69,17 @@ class _Project2State extends State<Project2> {
               ),
             ),
           ),
-          SizedBox(
-            height: 30,
-          ),
+          SizedBox(height: 30),
           Column(
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Blinkit()));
+                  Get.off(
+                    ProjectDetailPage(
+                        ProjectTitle: "Blinkit",
+                        ProjectDescription:
+                            "Blinkit is a fast and efficient platform designed for instant grocery and essentials delivery."),
+                  );
                 },
                 child: Row(
                   children: [
@@ -90,9 +99,50 @@ class _Project2State extends State<Project2> {
                         )),
                       ),
                     ),
-                    SizedBox(
-                      width: 50,
+                    SizedBox(width: 50),
+                    Container(
+                      child: Text(
+                        "Blinkit",
+                        style: TextStyle(
+                            fontSize: 35, fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+          SizedBox(height: 30),
+          Column(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Get.off(
+                    ProjectDetailPage(
+                        ProjectTitle: "Blinkit",
+                        ProjectDescription:
+                            "Blinkit is a fast and efficient platform designed for instant grocery and essentials delivery."),
+                  );
+                },
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 25),
+                      child: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.black,
+                        ),
+                        child: Center(
+                            child: Text(
+                          "B",
+                          style: TextStyle(color: Colors.white),
+                        )),
+                      ),
                     ),
+                    SizedBox(width: 50),
                     Container(
                       child: Text(
                         "Blinkit",
