@@ -11,8 +11,12 @@ class Project2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.yellow,
+      extendBodyBehindAppBar: true,
       body: Column(
         children: [
+          SizedBox(
+            height: 30,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [

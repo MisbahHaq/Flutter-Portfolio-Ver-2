@@ -22,6 +22,9 @@ class ProjectDetailPage extends StatelessWidget {
           children: [
             Row(
               children: [
+                SizedBox(
+                  height: 40,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30, top: 30),
                   child: GestureDetector(
@@ -85,17 +88,22 @@ class ProjectDetailPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.amber,
                     ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "User-Friendly Navigation",
+                          style: GoogleFonts.poppins(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     width: 10,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width / 2,
-                    height: 250,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.amber,
-                    ),
                   ),
                   SizedBox(
                     width: 10,

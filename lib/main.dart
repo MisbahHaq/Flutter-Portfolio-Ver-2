@@ -74,6 +74,15 @@ class _HiddenState extends State<Hidden> {
         ),
         const Project2(),
       ),
+      ScreenHiddenDrawer(
+        ItemHiddenMenu(
+          name: "About Me",
+          baseStyle: myTextStyle,
+          selectedStyle: myTextStyle,
+          colorLineSelected: Colors.deepPurple,
+        ),
+        const AboutPage(),
+      ),
     ];
   }
 
