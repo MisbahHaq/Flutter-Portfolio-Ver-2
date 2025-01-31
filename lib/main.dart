@@ -7,9 +7,11 @@ import 'package:portfolio/Pages/HomePage.dart';
 import 'package:portfolio/Pages/about.dart';
 import 'package:portfolio/Pages/experience.dart';
 import 'package:portfolio/Pages/login.dart';
+import 'package:portfolio/Pages/module.dart';
 import 'package:portfolio/Pages/projects.dart';
 import 'package:portfolio/Project%20Pages/project_detail_page.dart.dart';
 import 'package:portfolio/Project%20Pages/projects2.dart';
+import 'package:portfolio/constants/module.dart';
 
 void main() {
   runApp(const MyApp());

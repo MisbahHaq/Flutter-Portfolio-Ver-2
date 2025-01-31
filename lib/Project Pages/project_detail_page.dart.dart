@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/Pages/module.dart';
 import 'package:portfolio/Project%20Pages/projects2.dart';
 
 class ProjectDetailPage extends StatelessWidget {
@@ -92,11 +93,19 @@ class ProjectDetailPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          "User-Friendly Navigation",
-                          style: GoogleFonts.poppins(
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ModulePage()));
+                          },
+                          child: Text(
+                            "User-Friendly Navigation",
+                            style: GoogleFonts.poppins(
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ],
