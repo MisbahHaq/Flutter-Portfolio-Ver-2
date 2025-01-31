@@ -65,6 +65,19 @@ class HomePage extends StatelessWidget {
               "assets/images/devv.jpg",
               height: 250,
             ),
+            SizedBox(
+              height: 120,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.asset(
+                  "assets/images/sw2.gif",
+                  width: 90,
+                  height: 90,
+                ),
+              ],
+            )
           ],
         ),
       ),
