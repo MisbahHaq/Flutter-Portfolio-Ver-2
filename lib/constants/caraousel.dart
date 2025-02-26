@@ -101,7 +101,6 @@ class CaraouselAurPaisy extends StatelessWidget {
   }
 }
 
-//       "assets/images/bank3.png",
 //     ];
 //     return Center(
 //       child: CarouselSlider(
