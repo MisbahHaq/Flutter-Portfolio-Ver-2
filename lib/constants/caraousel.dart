@@ -101,7 +101,6 @@ class CaraouselAurPaisy extends StatelessWidget {
   }
 }
 
-//   @override
 //   Widget build(BuildContext context) {
 //     final List<String> imgList1 = [
 //       "assets/images/bank1.png",
