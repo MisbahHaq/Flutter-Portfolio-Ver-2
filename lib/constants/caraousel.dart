@@ -101,7 +101,6 @@ class CaraouselAurPaisy extends StatelessWidget {
   }
 }
 
-//   const CaraouselProject({super.key});
 //   @override
 //   Widget build(BuildContext context) {
 //     final List<String> imgList1 = [
