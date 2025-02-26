@@ -101,7 +101,6 @@ class CaraouselAurPaisy extends StatelessWidget {
   }
 }
 
-//       "assets/images/bank1.png",
 //       "assets/images/bank2.png",
 //       "assets/images/bank3.png",
 //     ];
