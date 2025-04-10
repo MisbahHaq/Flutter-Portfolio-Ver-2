@@ -47,8 +47,6 @@ class NavBar extends StatelessWidget {
               color: isDarkMode ? Colors.white : Colors.black,
             ),
           ),
-
-          // Navigation (Shows differently on Mobile & Desktop)
           if (!isMobile)
             Row(
               children: [
@@ -71,8 +69,6 @@ class NavBar extends StatelessWidget {
                     _menuItem("Dev Notes"),
                   ],
             ),
-
-          // Theme Toggle Button
           IconButton(
             onPressed: toggleTheme,
             icon: Icon(

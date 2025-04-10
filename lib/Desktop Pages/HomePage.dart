@@ -135,7 +135,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Home Section
                     Container(
                       key: _homeKey,
                       height: MediaQuery.of(context).size.height,
@@ -212,9 +211,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                       crossAxisSpacing: 16,
                                     ),
                                 itemBuilder: (context, index) {
-                                  final item =
-                                      widget
-                                          .workItems[index]; // Use your list from HomePage
+                                  final item = widget.workItems[index];
                                   return Container(
                                     padding: EdgeInsets.all(16),
                                     decoration: BoxDecoration(
@@ -286,8 +283,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         ],
                       ),
                     ),
-
-                    // Dev Notes Section
                     Container(
                       key: _devNotesKey,
                       height: MediaQuery.of(context).size.height,

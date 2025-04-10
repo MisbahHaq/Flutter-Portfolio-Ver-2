@@ -68,7 +68,7 @@ class _DevNotesPageState extends State<DevNotesPage> {
                 Container(
                   width:
                       MediaQuery.of(context).size.width > 800
-                          ? 500 // max width for larger screens
+                          ? 500
                           : MediaQuery.of(context).size.width * 0.9,
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
