@@ -5,11 +5,34 @@ import 'package:Portfolio/Constants/DevNotes.dart';
 import 'package:Portfolio/Constants/Navbar.dart';
 
 class HomePage extends StatefulWidget {
+  bool showAllWork = false;
+
+  final List<Map<String, String>> detailedWorkItems = [
+    {
+      'company': 'abbvie',
+      'duration': 'September 2023 - June 2024',
+      'description':
+          'I was hired by this industry-leading pharmaceutical company to implement UX enhancements on their internal tools. One of my key contributions was to move filter and pagination state into the URLs to allow easy sharing of complex queries.',
+    },
+    {
+      'company': 'ClearSession',
+      'duration': 'November 2022 - August 2023',
+      'description':
+          'ClearSession improves how doctors and patients interact, focusing on data visualization. I joined the team in late 2022, six months after development started. Interesting technical aspects of the project include working with HTML canvas and recording user actions to replay at a later time.',
+    },
+    {
+      'company': 'TheRealReal',
+      'duration': 'March 2019 - May 2019',
+      'description':
+          'I briefly worked as a Ruby on Rails Developer for TheRealReal, a luxury consignment service.',
+    },
+  ];
+
   final List<Map<String, dynamic>> workItems = [
     {
       'title': 'Foodgo',
       'subtitle':
-          'FoodGo is a mobile app designed to satisfy your cravings instantly. ',
+          'FoodGo is a mobile app designed to satisfy your cravings instantly.',
     },
     {
       'title': 'Zelt Website',
@@ -25,7 +48,12 @@ class HomePage extends StatefulWidget {
       'subtitle':
           'CineFlix is a mobile app designed to enhance your movie-going experience.',
     },
+    {
+      'title': 'Mega Mart',
+      'subtitle': 'A grocery ordering app with Firebase and Flutter.',
+    },
   ];
+
   HomePage({super.key});
 
   @override
@@ -98,6 +126,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final remaining = widget.workItems.length - 4;
+
     return Scaffold(
       backgroundColor: isDarkMode ? Colors.black : Colors.white,
       body: Column(
@@ -195,88 +225,155 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           Center(
                             child: ConstrainedBox(
                               constraints: BoxConstraints(maxWidth: 800),
-                              child: GridView.builder(
-                                shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
-                                itemCount: 4,
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount:
-                                          MediaQuery.of(context).size.width >
-                                                  600
-                                              ? 2
-                                              : 1,
-                                      mainAxisExtent: 160,
-                                      mainAxisSpacing: 16,
-                                      crossAxisSpacing: 16,
-                                    ),
-                                itemBuilder: (context, index) {
-                                  final item = widget.workItems[index];
-                                  return Container(
-                                    padding: EdgeInsets.all(16),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white.withOpacity(
-                                        isDarkMode ? 0.2 : 0.9,
-                                      ),
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          item['title']!,
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color:
-                                                item['title'] == 'EMERITUS'
-                                                    ? Colors.green
-                                                    : item['title'] ==
-                                                        'RetroAlly'
-                                                    ? Colors.deepOrange
-                                                    : isDarkMode
-                                                    ? Colors.white
-                                                    : Colors.black,
+                              child: Column(
+                                children: [
+                                  GridView.builder(
+                                    shrinkWrap: true,
+                                    physics: NeverScrollableScrollPhysics(),
+                                    itemCount:
+                                        widget.workItems.length > 4
+                                            ? 4
+                                            : widget.workItems.length,
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount:
+                                              MediaQuery.of(
+                                                        context,
+                                                      ).size.width >
+                                                      600
+                                                  ? 2
+                                                  : 1,
+                                          mainAxisExtent: 160,
+                                          mainAxisSpacing: 16,
+                                          crossAxisSpacing: 16,
+                                        ),
+                                    itemBuilder: (context, index) {
+                                      final item = widget.workItems[index];
+                                      return Container(
+                                        padding: EdgeInsets.all(16),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white.withOpacity(
+                                            isDarkMode ? 0.2 : 0.9,
+                                          ),
+                                          borderRadius: BorderRadius.circular(
+                                            20,
                                           ),
                                         ),
-                                        const SizedBox(height: 4),
-                                        if (item['title'] != 'airops')
-                                          Text.rich(
-                                            TextSpan(
-                                              text: 'at ',
-                                              children: [
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              item['title']!,
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color:
+                                                    item['title'] == 'EMERITUS'
+                                                        ? Colors.green
+                                                        : item['title'] ==
+                                                            'RetroAlly'
+                                                        ? Colors.deepOrange
+                                                        : isDarkMode
+                                                        ? Colors.white
+                                                        : Colors.black,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 4),
+                                            if (item['title'] != 'airops')
+                                              Text.rich(
                                                 TextSpan(
-                                                  text: 'WYEWORKS.',
-                                                  style: TextStyle(
-                                                    color: Colors.redAccent,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
+                                                  text: 'at ',
+                                                  children: [
+                                                    TextSpan(
+                                                      text: 'WYEWORKS.',
+                                                      style: TextStyle(
+                                                        color: Colors.redAccent,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
+                                                style: TextStyle(
+                                                  color:
+                                                      isDarkMode
+                                                          ? Colors.white70
+                                                          : Colors.black87,
+                                                ),
+                                              ),
+                                            const SizedBox(height: 8),
+                                            Text(
+                                              item['subtitle']!,
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color:
+                                                    isDarkMode
+                                                        ? Colors.white70
+                                                        : Colors.black87,
+                                              ),
                                             ),
-                                            style: TextStyle(
-                                              color:
-                                                  isDarkMode
-                                                      ? Colors.white70
-                                                      : Colors.black87,
-                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  if (remaining > 0) const SizedBox(height: 16),
+                                  if (remaining > 0)
+                                    MouseRegion(
+                                      onEnter:
+                                          (_) =>
+                                              setState(() => isHovered = true),
+                                      onExit:
+                                          (_) =>
+                                              setState(() => isHovered = false),
+                                      child: AnimatedContainer(
+                                        duration: Duration(milliseconds: 300),
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 20,
+                                          vertical: 10,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color:
+                                              isHovered
+                                                  ? Color.fromARGB(
+                                                    255,
+                                                    192,
+                                                    250,
+                                                    211,
+                                                  )
+                                                  : Color.fromARGB(
+                                                    255,
+                                                    212,
+                                                    255,
+                                                    226,
+                                                  ),
+                                          borderRadius: BorderRadius.circular(
+                                            20,
                                           ),
-                                        const SizedBox(height: 8),
-                                        Text(
-                                          item['subtitle']!,
+                                          boxShadow:
+                                              isHovered
+                                                  ? [
+                                                    BoxShadow(
+                                                      color: Colors.greenAccent
+                                                          .withOpacity(0.5),
+                                                      blurRadius: 15,
+                                                      spreadRadius: 2,
+                                                    ),
+                                                  ]
+                                                  : [],
+                                        ),
+                                        child: Text(
+                                          '+$remaining',
                                           style: TextStyle(
-                                            fontSize: 12,
-                                            color:
-                                                isDarkMode
-                                                    ? Colors.white70
-                                                    : Colors.black87,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.green.shade800,
                                           ),
                                         ),
-                                      ],
+                                      ),
                                     ),
-                                  );
-                                },
+                                ],
                               ),
                             ),
                           ),
