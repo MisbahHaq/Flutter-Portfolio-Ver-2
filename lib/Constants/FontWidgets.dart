@@ -93,10 +93,9 @@ class AppWidget {
     double fontSize =
         screenWidth > 1200
             ? 22
-            : // Large screens (desktop)
-            screenWidth > 600
+            : screenWidth > 600
             ? 18
-            : 15; // Tablets and phones
+            : 15;
     return GoogleFonts.montserrat(
       textStyle: TextStyle(
         color: Colors.black,
