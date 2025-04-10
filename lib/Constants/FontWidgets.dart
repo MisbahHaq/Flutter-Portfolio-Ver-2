@@ -236,10 +236,9 @@ class AppWidget {
     double fontSize =
         screenWidth > 1200
             ? 200
-            : // Large screens (desktop)
-            screenWidth > 600
+            : screenWidth > 600
             ? 100
-            : 50; // Tablets and phones
+            : 50;
     return GoogleFonts.poppins(
       textStyle: TextStyle(
         color: Colors.black,
@@ -264,10 +263,9 @@ class AppWidget {
     double fontSize =
         screenWidth > 1200
             ? 50
-            : // Large screens (desktop)
-            screenWidth > 600
+            : screenWidth > 600
             ? 35
-            : 30; // Tablets and phones
+            : 30;
     return GoogleFonts.playfairDisplay(
       textStyle: TextStyle(
         color: Colors.black,
@@ -282,10 +280,9 @@ class AppWidget {
     double fontSize =
         screenWidth > 1200
             ? 60
-            : // Large screens (desktop)
-            screenWidth > 600
+            : screenWidth > 600
             ? 45
-            : 40; // Tablets and phones
+            : 40;
     return GoogleFonts.playfairDisplay(
       textStyle: TextStyle(
         color: Colors.white,
@@ -300,10 +297,9 @@ class AppWidget {
     double fontSize =
         screenWidth > 1200
             ? 60
-            : // Large screens (desktop)
-            screenWidth > 600
+            : screenWidth > 600
             ? 45
-            : 40; // Tablets and phones
+            : 40;
     return GoogleFonts.roboto(
       textStyle: TextStyle(
         color: Colors.black,
