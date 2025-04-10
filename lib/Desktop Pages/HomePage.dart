@@ -11,12 +11,14 @@ class HomePage extends StatefulWidget {
       'duration': 'January 2025 - February 2025',
       'description':
           'Briefly is a mobile application that delivers the latest news based on your selected categories. With real-time updates, an intuitive interface, and a seamless reading experience, you can stay informed on the topics that matter most to you.',
+      'tech': 'Flutter & Firebase',
     },
     {
       'company': 'Blinkit',
       'duration': 'December 2025 - January 2025',
       'description':
           'Blinkit Clone is a mobile app designed to bring grocery shopping to your doorstep in no time. It allows users to shop for groceries, fresh produce, daily essentials, and more with instant delivery, offering convenience at your fingertips.',
+      'tech': 'Flutter & Firebase',
     },
   ];
 
@@ -408,13 +410,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                             ),
                                             const SizedBox(height: 4),
                                             Text(
-                                              item['duration']!,
+                                              item['tech']!,
                                               style: TextStyle(
                                                 fontSize: 14,
+                                                fontWeight: FontWeight.bold,
                                                 color:
                                                     isDarkMode
-                                                        ? Colors.white60
-                                                        : Colors.black54,
+                                                        ? Colors.white
+                                                        : Colors.redAccent,
                                               ),
                                             ),
                                             const SizedBox(height: 8),
