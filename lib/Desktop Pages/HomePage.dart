@@ -5,26 +5,18 @@ import 'package:Portfolio/Constants/DevNotes.dart';
 import 'package:Portfolio/Constants/Navbar.dart';
 
 class HomePage extends StatefulWidget {
-  bool showAllWork = false;
-
   final List<Map<String, String>> detailedWorkItems = [
     {
-      'company': 'abbvie',
-      'duration': 'September 2023 - June 2024',
+      'company': 'Briefly',
+      'duration': 'January 2025 - February 2025',
       'description':
-          'I was hired by this industry-leading pharmaceutical company to implement UX enhancements on their internal tools. One of my key contributions was to move filter and pagination state into the URLs to allow easy sharing of complex queries.',
+          'Briefly is a mobile application that delivers the latest news based on your selected categories. With real-time updates, an intuitive interface, and a seamless reading experience, you can stay informed on the topics that matter most to you.',
     },
     {
-      'company': 'ClearSession',
-      'duration': 'November 2022 - August 2023',
+      'company': 'Blinkit',
+      'duration': 'December 2025 - January 2025',
       'description':
-          'ClearSession improves how doctors and patients interact, focusing on data visualization. I joined the team in late 2022, six months after development started. Interesting technical aspects of the project include working with HTML canvas and recording user actions to replay at a later time.',
-    },
-    {
-      'company': 'TheRealReal',
-      'duration': 'March 2019 - May 2019',
-      'description':
-          'I briefly worked as a Ruby on Rails Developer for TheRealReal, a luxury consignment service.',
+          'Blinkit Clone is a mobile app designed to bring grocery shopping to your doorstep in no time. It allows users to shop for groceries, fresh produce, daily essentials, and more with instant delivery, offering convenience at your fingertips.',
     },
   ];
 
@@ -33,24 +25,29 @@ class HomePage extends StatefulWidget {
       'title': 'Foodgo',
       'subtitle':
           'FoodGo is a mobile app designed to satisfy your cravings instantly.',
+      'tech': 'Flutter & Firebase',
     },
     {
       'title': 'Zelt Website',
       'subtitle': 'A fully responsive clone of the Zelt',
+      'tech': 'HTML, CSS, JavaScript',
     },
     {
       'title': 'CyberFiction',
       'subtitle':
           'A simple website built with HTML, CSS, and JavaScript that features a 3D-looking image effect that moves when the user scrolls.',
+      'tech': 'HTML, CSS, JavaScript',
     },
     {
       'title': 'CineFlix',
       'subtitle':
           'CineFlix is a mobile app designed to enhance your movie-going experience.',
+      'tech': 'Flutter & Firebase',
     },
     {
       'title': 'Mega Mart',
       'subtitle': 'A grocery ordering app with Firebase and Flutter.',
+      'tech': 'Flutter & Firebase',
     },
   ];
 
@@ -62,8 +59,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   bool isDarkMode = false;
-  final ScrollController _scrollController = ScrollController();
+  bool showAllWork = false;
+  bool isHovered = false;
 
+  final ScrollController _scrollController = ScrollController();
   final GlobalKey _homeKey = GlobalKey();
   final GlobalKey _workKey = GlobalKey();
   final GlobalKey _devNotesKey = GlobalKey();
@@ -71,8 +70,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<Offset> _misbahAnimation;
   late Animation<Offset> _haqueAnimation;
-
-  bool isHovered = false;
 
   void toggleTheme() {
     setState(() {
@@ -94,26 +91,22 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
     );
-
     _misbahAnimation = Tween<Offset>(
       begin: Offset(0, 1),
       end: Offset(0, 0),
     ).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeOut),
     );
-
     _haqueAnimation = Tween<Offset>(
       begin: Offset(0, 1),
       end: Offset(0, 0),
     ).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeOut),
     );
-
     _animationController.forward();
   }
 
@@ -126,7 +119,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final remaining = widget.workItems.length - 4;
+    final remaining = widget.workItems.length - 3;
 
     return Scaffold(
       backgroundColor: isDarkMode ? Colors.black : Colors.white,
@@ -136,13 +129,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             isDarkMode: isDarkMode,
             toggleTheme: toggleTheme,
             onNavItemTap: (String section) {
-              if (section == "Home") {
+              if (section == "Home")
                 scrollToSection(_homeKey);
-              } else if (section == "Work") {
+              else if (section == "Work")
                 scrollToSection(_workKey);
-              } else if (section == "Dev Notes") {
+              else if (section == "Dev Notes")
                 scrollToSection(_devNotesKey);
-              }
             },
           ),
           Expanded(
@@ -151,10 +143,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 gradient: LinearGradient(
                   colors:
                       isDarkMode
-                          ? [
-                            Color.fromARGB(255, 77, 75, 184),
-                            Color.fromARGB(255, 4, 110, 39),
-                          ]
+                          ? [Color(0xFF4D4BB8), Color(0xFF046E27)]
                           : [Color(0xFFB5EAD7), Color(0xFFD6C3FC)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -165,6 +154,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Home Section
                     Container(
                       key: _homeKey,
                       height: MediaQuery.of(context).size.height,
@@ -204,6 +194,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         ],
                       ),
                     ),
+                    // Work Section
                     Container(
                       key: _workKey,
                       padding: const EdgeInsets.all(16.0),
@@ -269,39 +260,35 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.bold,
                                                 color:
-                                                    item['title'] == 'EMERITUS'
-                                                        ? Colors.green
-                                                        : item['title'] ==
-                                                            'RetroAlly'
-                                                        ? Colors.deepOrange
-                                                        : isDarkMode
+                                                    isDarkMode
                                                         ? Colors.white
                                                         : Colors.black,
                                               ),
                                             ),
                                             const SizedBox(height: 4),
-                                            if (item['title'] != 'airops')
-                                              Text.rich(
-                                                TextSpan(
-                                                  text: 'at ',
-                                                  children: [
-                                                    TextSpan(
-                                                      text: 'WYEWORKS.',
-                                                      style: TextStyle(
-                                                        color: Colors.redAccent,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
+                                            Text.rich(
+                                              TextSpan(
+                                                text: 'using ',
+                                                children: [
+                                                  TextSpan(
+                                                    text:
+                                                        item['tech'] ??
+                                                        'Unknown',
+                                                    style: TextStyle(
+                                                      color: Colors.redAccent,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
-                                                  ],
-                                                ),
-                                                style: TextStyle(
-                                                  color:
-                                                      isDarkMode
-                                                          ? Colors.white70
-                                                          : Colors.black87,
-                                                ),
+                                                  ),
+                                                ],
                                               ),
+                                              style: TextStyle(
+                                                color:
+                                                    isDarkMode
+                                                        ? Colors.white70
+                                                        : Colors.black87,
+                                              ),
+                                            ),
                                             const SizedBox(height: 8),
                                             Text(
                                               item['subtitle']!,
@@ -319,7 +306,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     },
                                   ),
                                   if (remaining > 0) const SizedBox(height: 16),
-                                  if (remaining > 0)
+                                  if (!showAllWork && remaining > 0)
                                     MouseRegion(
                                       onEnter:
                                           (_) =>
@@ -327,52 +314,124 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                       onExit:
                                           (_) =>
                                               setState(() => isHovered = false),
-                                      child: AnimatedContainer(
-                                        duration: Duration(milliseconds: 300),
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 20,
-                                          vertical: 10,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color:
-                                              isHovered
-                                                  ? Color.fromARGB(
-                                                    255,
-                                                    192,
-                                                    250,
-                                                    211,
-                                                  )
-                                                  : Color.fromARGB(
-                                                    255,
-                                                    212,
-                                                    255,
-                                                    226,
-                                                  ),
-                                          borderRadius: BorderRadius.circular(
-                                            20,
+                                      child: GestureDetector(
+                                        onTap:
+                                            () => setState(
+                                              () => showAllWork = true,
+                                            ),
+                                        child: AnimatedContainer(
+                                          duration: Duration(milliseconds: 300),
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 20,
+                                            vertical: 10,
                                           ),
-                                          boxShadow:
-                                              isHovered
-                                                  ? [
-                                                    BoxShadow(
-                                                      color: Colors.greenAccent
-                                                          .withOpacity(0.5),
-                                                      blurRadius: 15,
-                                                      spreadRadius: 2,
+                                          decoration: BoxDecoration(
+                                            color:
+                                                isHovered
+                                                    ? Color.fromARGB(
+                                                      255,
+                                                      192,
+                                                      250,
+                                                      211,
+                                                    )
+                                                    : Color.fromARGB(
+                                                      255,
+                                                      212,
+                                                      255,
+                                                      226,
                                                     ),
-                                                  ]
-                                                  : [],
-                                        ),
-                                        child: Text(
-                                          '+$remaining',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.green.shade800,
+                                            borderRadius: BorderRadius.circular(
+                                              20,
+                                            ),
+                                            boxShadow:
+                                                isHovered
+                                                    ? [
+                                                      BoxShadow(
+                                                        color: Colors
+                                                            .greenAccent
+                                                            .withOpacity(0.5),
+                                                        blurRadius: 15,
+                                                        spreadRadius: 2,
+                                                      ),
+                                                    ]
+                                                    : [],
+                                          ),
+                                          child: Text(
+                                            '+$remaining',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.green.shade800,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
+
+                                  if (showAllWork)
+                                    ...widget.detailedWorkItems.map((item) {
+                                      return Container(
+                                        margin: const EdgeInsets.symmetric(
+                                          vertical: 10,
+                                        ),
+                                        padding: const EdgeInsets.all(16),
+                                        decoration: BoxDecoration(
+                                          color:
+                                              isDarkMode
+                                                  ? Colors.white12
+                                                  : Colors.white,
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black12,
+                                              blurRadius: 8,
+                                              offset: Offset(0, 2),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              item['company']!,
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                                color:
+                                                    isDarkMode
+                                                        ? Colors.white
+                                                        : Colors.black,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 4),
+                                            Text(
+                                              item['duration']!,
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                color:
+                                                    isDarkMode
+                                                        ? Colors.white60
+                                                        : Colors.black54,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 8),
+                                            Text(
+                                              item['description']!,
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                color:
+                                                    isDarkMode
+                                                        ? Colors.white70
+                                                        : Colors.black87,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }).toList(),
                                 ],
                               ),
                             ),
@@ -380,6 +439,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         ],
                       ),
                     ),
+                    // Dev Notes Section
                     Container(
                       key: _devNotesKey,
                       height: MediaQuery.of(context).size.height,
