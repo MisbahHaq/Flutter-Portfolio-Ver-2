@@ -192,7 +192,7 @@ class AppWidget {
 
   static TextStyle NavStyle(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double fontSize = screenWidth > 600 ? 16 : 14; // Tablets and phones
+    double fontSize = screenWidth > 600 ? 16 : 14;
     return GoogleFonts.playfairDisplay(
       textStyle: TextStyle(
         color: Colors.black,
@@ -204,7 +204,7 @@ class AppWidget {
 
   static TextStyle NavStyle2(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double fontSize = screenWidth > 600 ? 12 : 10; // Tablets and phones
+    double fontSize = screenWidth > 600 ? 12 : 10;
     return GoogleFonts.roboto(
       textStyle: TextStyle(
         color: Colors.black,
@@ -219,10 +219,9 @@ class AppWidget {
     double fontSize =
         screenWidth > 1200
             ? 280
-            : // Large screens (desktop)
-            screenWidth > 600
+            : screenWidth > 600
             ? 150
-            : 70; // Tablets and phones
+            : 70;
     return GoogleFonts.poppins(
       textStyle: TextStyle(
         color: Colors.black,
