@@ -144,10 +144,9 @@ class AppWidget {
     double fontSize =
         screenWidth > 1200
             ? 120
-            : // Large screens (desktop)
-            screenWidth > 600
+            : screenWidth > 600
             ? 90
-            : 60; // Tablets and phones
+            : 60;
     return GoogleFonts.playfairDisplay(
       textStyle: TextStyle(
         color: Colors.black,
