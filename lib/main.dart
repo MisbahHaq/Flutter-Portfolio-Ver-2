@@ -1,5 +1,6 @@
 import 'package:Portfolio/Constants/SplashScreen.dart';
 import 'package:Portfolio/Desktop%20Pages/HomePage.dart';
+import 'package:Portfolio/test.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,6 +14,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScreen());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: Test());
   }
 }
